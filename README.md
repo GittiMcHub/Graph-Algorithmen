@@ -144,6 +144,7 @@ First and foremost a two-dimensional integer array with the name "information" i
 | DISTANCE | 0 | Integer.MAX_VALUE | Integer.MAX_VALUE |
 | PREVIOUS | 0 | -1 | -1 |
 | OK | false | false | false |
+
 The help BiMap numbersToVerticies stores the index for each vertex and allows easy access via the index → Vertex or Vertex → Index.
 The list "leftToCheckVertecies" contains all vertices that still have the OK value false, which are then processed for the algorithm.
 The first vertex to be checked is taken, the one with the lowest distance is selected and its value is set to OK, so that "leftToCheckVertecies" is reduced by this vertex. Then the outgoing edges are taken from this vertex and the distance of the node as well as its predecessor are entered for each neighboring vertex.
