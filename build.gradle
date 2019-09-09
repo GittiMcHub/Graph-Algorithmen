@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+group = "com.haw.avdt"
+version = '1.0'
+sourceCompatibility = 8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+configurations {
+    testCompile.exclude group: 'junit', module: 'junit'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/net.sf.jung/jung-graph-impl
+    compile group: 'net.sf.jung', name: 'jung2', version: '2.0.1'
+    compile group: 'net.sf.jung', name: 'jung-api', version: '2.0.1'
+    compile group: 'net.sf.jung', name: 'jung-graph-impl', version: '2.0.1'
+    compile group: 'net.sf.jung', name: 'jung-visualization', version: '2.1'
+    compile group: 'net.sf.jung', name: 'jung-algorithms', version: '2.1'
+    compile group: 'net.sf.jung', name: 'jung-io', version: '2.1'
+
+    // dependencies for test-execution
+    testCompile 'org.assertj:assertj-core:3.10.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testCompile 'org.junit.jupiter:junit-jupiter-params:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+/*
+test {
+    useJUnitPlatform()
+    failFast = false
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}*/
+
+task buildJar(type: Jar) {
+    dependsOn 'test'
+    manifest {
+        attributes 'Implementation-Title': 'JavaGraphAlgorithms.jar',
+                'Main-Class': 'com.haw.avdt.Init'
+    }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '4.10.2'
+//}
