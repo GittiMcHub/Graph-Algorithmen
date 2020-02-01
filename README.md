@@ -1,7 +1,7 @@
 # Graph algorithm implementations in Java with visualization and compared to JUNG Graph Lib
 
 This project is the result out of the practical tasks in third semester B.Sc. Applied Information Science "Graph Theoretical Concepts and Algorithms" course.
-As this lecture was given at a german university the following documentation, I will translate with deepl.com.
+As this lecture was given at a german university the following documentation is translated with deepl.com.
 
 ## Resources
 - JUNG library http://jung.sourceforge.net/
